@@ -21,8 +21,12 @@
         <td><%= property.price %></td>
         <td><%= property.user_id %></td>
         <td><%= link_to 'Show', property %></td>
-        <td><%= link_to 'Edit', edit_property_path(property) %></td>
-        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_property_path(property) %></td>
+          <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <span></span>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +34,8 @@
 
 <br>
 
-<%= link_to 'New Property', new_property_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Property', new_property_path %>
+<% else %>
+  <span></span>
+<% end %>
