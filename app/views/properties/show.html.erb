@@ -15,6 +15,27 @@
   <%= @property.price %>
 </p>
 
+<div>
+  <%= form_with(model: [@property, @image]) do |form| %>
+    <%= form.submit "Add image" %>
+  <% end %>
+</div>
+
+<% @property.images.each do |image| %>
+  <% if image.persisted? %>
+    <% if image.image.present? %>
+      <%= image_tag (image.image) %>
+    <% else %>
+      <%= form_with(model: [@property, image]) do |form| %>
+        <%= form.file_field :image %>
+        <div>
+          <%= form.submit "Save" %>
+        </div>
+        <% end %>
+      <% end%>
+  <% end %>
+<%end %>
+
 <p>
   <strong>User:</strong>
   <%= @property.user_id %>
