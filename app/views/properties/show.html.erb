@@ -15,11 +15,13 @@
   <%= @property.price %>
 </p>
 
+<% if user_signed_in? %>
 <div>
   <%= form_with(model: [@property, @image]) do |form| %>
     <%= form.submit "Add image" %>
   <% end %>
 </div>
+<% end %>
 
 <% @property.images.each do |image| %>
   <% if image.persisted? %>
