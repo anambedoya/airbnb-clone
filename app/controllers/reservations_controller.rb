@@ -25,6 +25,7 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+    calculate_cost()
 
     respond_to do |format|
       if @reservation.save
@@ -40,6 +41,7 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
   def update
+    calculate_cost()
     respond_to do |format|
       if @reservation.update(reservation_params)
         format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
@@ -59,6 +61,11 @@ class ReservationsController < ApplicationController
       format.html { redirect_to reservations_url, notice: 'Reservation was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def calculate_cost
+    @property = Property.find(reservation_params[:property_id])
+    @reservation.cost = @property.price * @reservation.nights_number
   end
 
   private

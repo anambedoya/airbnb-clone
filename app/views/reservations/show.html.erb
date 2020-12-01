@@ -40,5 +40,9 @@
   <%= @reservation.property_id %>
 </p>
 
-<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
-<%= link_to 'Back', reservations_path %>
+<%= link_to 'Edit', edit_reservation_path(@reservation) %>
+<% if user_signed_in? %>
+    <%= link_to 'Back', reservations_path %>
+<% else %>
+    <%= link_to 'Back', properties_path %>
+<% end %>
