@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :properties do
     resources :images
   end
-  post '/reservations/approve/:id' => 'reservations#approve', as: :reservations_approve
+  get '/reservations/approve/:id' => 'reservations#approve', as: :reservations_approve
   devise_for :users
   get 'home/index'
   devise_for :views

@@ -32,7 +32,7 @@
         <td><%= reservation.status %></td>
         <% if user_signed_in? %>
           <td><%= link_to 'Show', reservation %></td>
-          <td><%= link_to 'Approve', reservation, method: :reservations_approve_path %></td>
+          <td><%= link_to 'Approve', reservations_approve_path(reservation) %></td>
         <% else %>
           <td><%= link_to 'Show', reservation %></td>
           <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>

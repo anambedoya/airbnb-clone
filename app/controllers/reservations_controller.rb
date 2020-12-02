@@ -74,7 +74,8 @@ class ReservationsController < ApplicationController
   end
 
   def approve
-    @reservation.status = 'Approve'
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(status: 'Approve')
   end
 
   private
