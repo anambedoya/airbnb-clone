@@ -40,6 +40,11 @@
   <%= @reservation.property_id %>
 </p>
 
+<p>
+  <strong>Status:</strong>
+  <%= @reservation.status %>
+</p>
+
 <%= link_to 'Edit', edit_reservation_path(@reservation) %>
 <% if user_signed_in? %>
     <%= link_to 'Back', reservations_path %>

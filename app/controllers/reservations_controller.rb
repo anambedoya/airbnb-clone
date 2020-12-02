@@ -26,6 +26,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     calculate_cost()
+    change_status()
 
     respond_to do |format|
       if @reservation.save
@@ -66,6 +67,14 @@ class ReservationsController < ApplicationController
   def calculate_cost
     @property = Property.find(reservation_params[:property_id])
     @reservation.cost = @property.price * @reservation.nights_number
+  end
+
+  def change_status
+    @reservation.status = "Pending"
+  end
+
+  def approve
+    @reservation.status = 'Approve'
   end
 
   private

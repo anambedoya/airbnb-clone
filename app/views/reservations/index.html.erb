@@ -13,6 +13,7 @@
       <th>Guests number</th>
       <th>Cost</th>
       <th>Property</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,9 +29,14 @@
         <td><%= reservation.guests_number %></td>
         <td><%= reservation.cost %></td>
         <td><%= reservation.property_id %></td>
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= reservation.status %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Show', reservation %></td>
+          <td><%= link_to 'Approve', reservation, method: :reservations_approve_path %></td>
+        <% else %>
+          <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
+          <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
