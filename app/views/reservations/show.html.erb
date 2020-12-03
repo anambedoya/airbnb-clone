@@ -45,9 +45,9 @@
   <%= @reservation.status %>
 </p>
 
-<%= link_to 'Edit', edit_reservation_path(@reservation) %>
 <% if user_signed_in? %>
-    <%= link_to 'Back', reservations_path %>
+  <span></span>
 <% else %>
-    <%= link_to 'Back', properties_path %>
+  <%= link_to 'Edit', edit_reservation_path(@reservation) %>
 <% end %>
+<%= link_to 'Back', reservations_path %>
