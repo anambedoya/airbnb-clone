@@ -1,24 +1,11 @@
-# README
+# Airbnb Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Final project made for the RoR GAP bootcamp. It consists on a minimal vacation rental service app where the users with no need of login can see properties uploaded by a host and they can make a reservation.
 
-Things you may want to cover:
+Some considerations:
 
-* Ruby version
+* To run the project you just need to clone it and type in a terminal: bundle install (to install all the dependencies) and then: rails s (to start the server)
 
-* System dependencies
+* To run the tests with rspec, type: rspec
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* If you prefer to see the live version, go to: http://gapairbnbclone.herokuapp.com/
