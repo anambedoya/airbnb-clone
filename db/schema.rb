@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_12_01_033718) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_033718) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.integer "property_id", null: false
+    t.bigint "property_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["property_id"], name: "index_images_on_property_id"
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_033718) do
     t.string "title"
     t.string "description"
     t.integer "price"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_properties_on_user_id"
@@ -58,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_033718) do
     t.integer "nights_number"
     t.string "guests_number"
     t.integer "cost"
-    t.integer "property_id", null: false
+    t.bigint "property_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
